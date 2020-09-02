@@ -1,0 +1,102 @@
+{% load static %}
+
+{% block body %}
+<!-- HEADER -->
+	<header>
+		<!-- top Header -->
+		<div id="top-header">
+			<div class="container">
+
+			</div>
+		</div>
+		<!-- /top Header -->
+
+		<!-- header -->
+		<div id="header">
+			<div class="container">
+				<div class="pull-left">
+					<!-- Logo -->
+					<div class="header-logo">
+						<a class="logo" href="#">
+							<img src="{% static 'img/logo-uz.png' %}" alt="">
+						</a>
+					</div>
+
+				</div>
+			</div>
+			<!-- header -->
+		</div>
+		<!-- container -->
+	</header>
+	<!-- /HEADER -->
+
+	<!-- NAVIGATION -->
+	<div id="navigation">
+		<!-- container -->
+		<div class="container">
+			<div id="responsive-nav">
+				<!-- category nav -->
+
+				<!-- /category nav -->
+
+				<!-- menu nav -->
+				<div class="menu-nav">
+					<span class="menu-header">Menu <i class="fa fa-bars"></i></span>
+					<ul class="menu-list text-center">
+						<li><a href="/">Главная страница/Bosh sahifa</a></li>
+						<li><a href="/qabul">Заявки/Arizalar</a></li>
+						<li><a href="#">About Us</a></li>
+
+					</ul>
+				</div>
+				<!-- menu nav -->
+			</div>
+		</div>
+		<!-- /container -->
+	</div>
+	<!-- /NAVIGATION -->
+
+    <div class="section">
+         <div class="container">
+             <div class="row">
+                 <div class="col-md-6">
+                     <form id="contact-form" class="clearfix" method="post" enctype="multipart/form-data">
+
+                         <div class="billing-details">
+                             {% csrf_token %}
+                             <div class="section-title">
+                                 <h3 class="title">{{ setting.title|safe }}</h3>
+                             {% if messages %}
+                                 {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}" role="alert">
+                                        {{ message }}
+                                    </div>
+                                 {% endfor %}
+                             {% endif %}
+                             </div>
+                             {{ form.as_p|safe }}
+                             <input type="submit" value=" ОТПРАВИТЬ ">
+                            <br>
+                         <br>
+                         </div>
+                     </form>
+                 </div>
+
+
+                <div class="col-md-6">
+                    <div class="contact">
+                        <div class="section-title">
+                             <h3>{{ setting.title2|safe }}</h3>
+                        </div>
+                        <div class="text">
+
+                            {{ setting.company|safe }}
+
+                        </div>
+                </div>
+
+             </div>
+         </div>
+    </div>
+{% endblock %}
+
